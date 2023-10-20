@@ -1,3 +1,7 @@
-import { test } from "../src";
+import {generateIconToJSON} from "../src";
 
-console.log(test());
+(async function () {
+    await generateIconToJSON('./playground/icons', './playground/icon.json', 'bs')
+
+    console.log('success')
+})()

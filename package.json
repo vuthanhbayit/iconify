@@ -1,8 +1,7 @@
 {
-  "name": "packageName",
+  "name": "@vt7/iconify",
   "version": "0.0.0",
   "description": "",
-  "repository": "unjs/packageName",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -19,6 +18,12 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "gen-icon": "./bin/index.js"
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "vitest dev",
@@ -26,9 +31,9 @@
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs . && prettier -c src test",
     "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix && prettier -c src test -w",
     "prepack": "pnpm run build",
-    "release": "pnpm test && changelogen --release && npm publish && git push --follow-tags",
-    "test": "pnpm lint && pnpm test:types && vitest run --coverage",
-    "test:types": "tsc --noEmit --skipLibCheck"
+    "prepublish": "pnpm build",
+    "playground": "jiti playground index.ts",
+    "release": "changelogen --release && npm publish && git push --follow-tags"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
@@ -41,6 +46,11 @@
     "typescript": "^5.2.2",
     "unbuild": "^2.0.0",
     "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "@iconify/tools": "^3.0.5",
+    "@iconify/utils": "^2.1.11",
+    "mri": "^1.2.0"
   },
   "packageManager": "pnpm@8.6.12"
 }
