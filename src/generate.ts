@@ -68,4 +68,3 @@ export const generateIconToJSON = async (inputDir: string, outputDir: string, pr
   // Save to file
   await fs.writeFile(outputDir, exported, 'utf8')
 }
-
